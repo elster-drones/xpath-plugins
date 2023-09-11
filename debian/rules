@@ -5,6 +5,8 @@ export DH_GOPKG := github.com/danos/xpath-plugins
 GOBUILDDIR := _build
 GO_PATH := $(CURDIR)/$(GOBUILDDIR)
 
+export http_proxy = http://127.0.0.1:9
+
 # dh-golang inserts the trimpath flag into any build that isn't manually
 # overridden. We need to match this when building plugins, or the plugins will
 # not load due to a package mismatch error (which really means that the path
@@ -55,7 +57,8 @@ override_dh_auto_test:
 # We do not vet vendor code
 vet:
 	echo "Skipping"
-#	if go doc cmd/vet >/dev/null 2>&1; then \
-#		GOPATH=$(CURDIR)/$(GOBUILDDIR) go vet $$(find . -type f -name \*.go | \
-#	    xargs dirname | sort -u | grep -v "/vendor/"); \
-#	fi
+	go env -w GO111MODULE=off
+	if go doc cmd/vet >/dev/null 2>&1; then \
+		GOPATH=$(CURDIR)/$(GOBUILDDIR) go vet $$(find . -type f -name \*.go | \
+	    xargs dirname | sort -u | grep -v "/vendor/"); \
+	fi
