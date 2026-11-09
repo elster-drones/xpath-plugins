@@ -3,6 +3,7 @@ Section: contrib/net
 Priority: extra
 Maintainer: Vyatta Package Maintainers <DL-vyatta-help@att.com>
 Build-Depends:
+ libc6-dev,
  debhelper (>= 9.20160709),
  dh-golang (>= 1.18),
  golang-any:native,
