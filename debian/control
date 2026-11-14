@@ -7,7 +7,8 @@ Build-Depends:
  debhelper (>= 9.20160709),
  dh-golang (>= 1.18),
  golang-any:native,
- golang-github-danos-yang-dev
+ golang-github-danos-yang-dev (>= 1794424174.6355b1b),
+ golang-github-danos-encoding-rfc7951-dev (>= 1794593982.d6b89cc)
 Standards-Version: 3.9.8
 
 Package: golang-xpath-plugins
